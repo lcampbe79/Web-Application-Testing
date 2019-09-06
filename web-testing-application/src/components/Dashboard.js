@@ -1,8 +1,26 @@
 import React from 'react'
 
+export const addStrike_NOTWORKING = currentStrikeCount => {
+  if (currentStrikeCount === 2) {
+    return 0;
+  }
+
+  return currentStrikeCount + 1;
+}
+
 const Dashboard = (props) => {
   const {ballCount, setBallCount, strikeCount, setStrikeCount} = props;
 
+  
+  const addStrike = currentStrikeCount => {
+    if (currentStrikeCount === 2) {
+      setBallCount(0)
+      setStrikeCount(0)
+    } else {
+      setStrikeCount(currentStrikeCount + 1);
+    }
+  }
+  
   return(
     <div className='dashboard'>
       <button 
@@ -20,14 +38,7 @@ const Dashboard = (props) => {
       </button>
       <button 
         className='strike-count-button'
-        onClick={() => {
-          if (strikeCount === 2) {
-            setBallCount(0)
-            setStrikeCount(0)
-          } else {
-            setStrikeCount(strikeCount + 1)
-          }
-        }} 
+        onClick={() => addStrike(strikeCount)}
       >
         Strikes
       </button>
