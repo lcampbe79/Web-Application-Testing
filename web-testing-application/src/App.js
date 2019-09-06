@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+import Display from './components/Display'
+import Dashboard from './components/Dashboard'
+  
 function App() {
+  const [ballCount, setBallCount] = useState(0);
+  const [strikeCount, setStrikeCount] = useState(0); 
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h4>Baseball Scoreboard</h4>
+      <Display 
+        ballCount={ballCount}
+        strikeCount={strikeCount}
+      />
+      <Dashboard 
+        ballCount={ballCount}
+        strikeCount={strikeCount}
+        setBallCount={setBallCount}
+        setStrikeCount={setStrikeCount}
+
+      />
     </div>
   );
 }
